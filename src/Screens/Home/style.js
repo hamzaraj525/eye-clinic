@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
+
 export default StyleSheet.create({
   txt: {
     flexDirection: 'column',
@@ -82,7 +83,13 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     flexDirection: 'row',
   },
-  pic: {width: 60, height: 60, borderRadius: 60 / 2},
+  pic: {
+    width: 50,
+    height: 50,
+    borderRadius: 50 / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   cardSub: {
     justifyContent: 'space-evenly',
     flexDirection: 'column',
@@ -97,9 +104,14 @@ export default StyleSheet.create({
     paddingHorizontal: '3%',
     backgroundColor: 'rgb(255,255,255)',
   },
+  nameInitials: {
+    color: 'white',
+    fontWeight: '900',
+    fontSize: 17,
+  },
   name: {
     color: 'black',
-    fontWeight: '800',
+    fontWeight: '700',
     fontSize: 15,
   },
   adres: {
@@ -128,7 +140,7 @@ export default StyleSheet.create({
     height: 90,
     borderRadius: 30,
     alignItems: 'center',
-    backgroundColor: 'rgb(178,229,226)',
+    backgroundColor: 'rgb(255,255,255)',
     justifyContent: 'center',
   },
   uploadBtn: {

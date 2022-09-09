@@ -16,8 +16,18 @@ import {
   Pressable,
   StatusBar,
   ActivityIndicator,
+  ScrollView,
+  FlatList,
 } from 'react-native';
 const {width, height} = Dimensions.get('window');
+const colors = [
+  'rgb(240,98,146)',
+  'rgb(186,104,200)',
+  'rgb(144,164,174)',
+  'rgb(255,185,82)',
+  'rgb(77,182,172)',
+];
+
 function HomeScreen({navigation, route}) {
   const [input, setInput] = useState('');
   const [userKey, setUserKey] = useState('');
@@ -153,44 +163,52 @@ function HomeScreen({navigation, route}) {
     );
   };
 
-  const renderServicesList = () => {
-    return list.map(item => {
-      return (
-        <Pressable
-          onPress={() => {
-            setUserKey(item.key);
-            setShowModal(true);
-          }}
-          style={style.servicesContain}>
-          <View style={style.card}>
-            <View style={style.picContainer}>
-              <FastImage
-                style={style.pic}
-                source={{
-                  uri: item.Img,
-                  priority: FastImage.priority.normal,
-                }}
-                resizeMode={FastImage.resizeMode.contain}
-              />
-            </View>
-
-            <View style={style.cardSubContainer}>
-              <View style={style.cardSub}>
-                <Text style={style.name}>{item.userName}</Text>
-                <Text style={style.adres}>{item.address}</Text>
-                <Text style={style.adres}>{item.phone}</Text>
-                <Text style={style.adres}>{item.email}</Text>
-              </View>
-              <MaterialIcons
-                name="keyboard-arrow-right"
-                size={28}
-                color={'grey'}
-              />
+  const renderServicesList = ({item, index}) => {
+    let initial = item.userName
+      .match(/\b(\w)/g)
+      .join('')
+      .toUpperCase();
+    return (
+      <Pressable
+        onPress={() => {
+          setUserKey(item.key);
+          setShowModal(true);
+        }}
+        style={style.servicesContain}>
+        <Animatable.View
+          iterationCount={1}
+          style={style.card}
+          useNativeDriver={true}
+          delay={index * 280}
+          animation={'fadeInLeft'}>
+          <View style={style.picContainer}>
+            <View
+              style={[
+                style.pic,
+                {
+                  backgroundColor: colors[index % colors.length],
+                },
+              ]}>
+              <Text style={style.nameInitials}>{initial}</Text>
             </View>
           </View>
-        </Pressable>
-      );
-    });
+
+          <View style={style.cardSubContainer}>
+            <View style={style.cardSub}>
+              <Text style={style.name}>{item.userName}</Text>
+              <Text style={style.adres}>{item.address}</Text>
+              <Text style={style.adres}>{item.phone}</Text>
+              <Text style={style.adres}>{item.email}</Text>
+            </View>
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={28}
+              color={'grey'}
+            />
+          </View>
+        </Animatable.View>
+      </Pressable>
+    );
   };
 
   return (
@@ -198,7 +216,14 @@ function HomeScreen({navigation, route}) {
       <StatusBar hidden barStyle="light-content" backgroundColor={'#FED116'} />
       {servicesHeader()}
       {!loader ? (
-        renderServicesList()
+        <>
+          <FlatList
+            data={list}
+            renderItem={renderServicesList}
+            contentContainerStyle={{paddingBottom: 20}}
+            keyExtractor={item => item.key}
+          />
+        </>
       ) : (
         <View style={{alignItems: 'center', marginTop: height / 4}}>
           <ActivityIndicator color={'#3372e2'} size={'large'} />
