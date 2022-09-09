@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "94261830439",
+    "project_id": "eyeclinic-ce560",
+    "storage_bucket": "eyeclinic-ce560.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94261830439:android:d723943e3bedc4e74b3f02",
+        "android_client_info": {
+          "package_name": "com.eyeclinic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94261830439-j3mbsmov4e262b8s98i69sir8iiiqd68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBqi7lvLlMTpCQE8BG82Kla_nyi8z43LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94261830439-j3mbsmov4e262b8s98i69sir8iiiqd68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
