@@ -8,7 +8,9 @@ import {
   Text,
   Image,
   TextInput,
+  Pressable,
 } from 'react-native';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-crop-picker';
 import style from './style';
@@ -20,6 +22,7 @@ const UploadUserData = ({navigation}) => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [age, setAge] = useState('');
   const [image, setImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
@@ -34,6 +37,7 @@ const UploadUserData = ({navigation}) => {
       address === '' ||
       email === '' ||
       phone === '' ||
+      age === '' ||
       phone.length !== 11
     ) {
       alert('Please fill all the fields');
@@ -46,17 +50,21 @@ const UploadUserData = ({navigation}) => {
           address: address,
           email: email,
           phone: phone,
+          age: age,
+          Reports: '',
         })
         .then(() => {
           setLoader(false);
+          navigation.navigate('HomeScreen');
+          setUserName('');
+          setAddress('');
+          setEmail('');
+          setPhone('');
+          setAge('');
         })
         .catch(() => {
           setLoader(false);
         });
-      setUserName('');
-      setAddress('');
-      setEmail('');
-      setPhone('');
     }
   };
 
@@ -66,96 +74,91 @@ const UploadUserData = ({navigation}) => {
       style={[
         style.container,
         {
-          backgroundColor: 'white',
+          backgroundColor: 'rgb(135,199,239)',
         },
       ]}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        style={{paddingHorizontal: 20}}
-        contentContainerStyle={{}}>
-        <Text
-          style={{
-            marginBottom: '7%',
-            marginTop: '7%',
-            fontSize: 25,
-            fontWeight: 'bold',
-            color: 'magenta',
-          }}>
-          New User
-        </Text>
+        style={{paddingHorizontal: '7%'}}
+        contentContainerStyle={{paddingBottom: '10%'}}>
+        <Pressable onPress={() => navigation.goBack()}>
+          <Fontisto
+            style={{marginTop: '6%'}}
+            name="arrow-left-l"
+            size={28}
+            color={'rgb(55,83,108)'}
+          />
+        </Pressable>
+        <Text style={style.boldTt}>New Patient</Text>
+        <Text style={style.newUserTxt}>Create account</Text>
 
-        <View style={[style.passwordContainer, {width: '69%'}]}>
-          <MaterialCommunityIcons name="pencil" size={20} color={'grey'} />
+        <View style={style.parentContainer}>
+          <Text style={style.inputHeader}>Name</Text>
           <TextInput
             value={userName}
-            style={{width: '90%', marginLeft: 6, height: 45}}
+            style={{height: 45, fontSize: 17}}
             onChangeText={text => setUserName(text)}
             placeholder="Enter Name"
-            placeholderTextColor={'#000'}
+            placeholderTextColor={'grey'}
           />
-        </View>
-        <View style={[style.passwordContainer, {width: '75%'}]}>
-          <MaterialCommunityIcons name="google-maps" size={20} color={'grey'} />
+          <View style={style.borderLine} />
+          <Text style={style.inputHeader}>Address</Text>
           <TextInput
             value={address}
-            style={{width: '90%', marginLeft: 6, height: 45}}
+            style={{height: 45, fontSize: 17}}
             onChangeText={text => setAddress(text)}
             placeholder="Enter Address"
-            placeholderTextColor={'#000'}
+            placeholderTextColor={'grey'}
           />
-        </View>
-        <View
-          style={[
-            style.passwordContainer,
-            {
-              width: '81%',
-              alignSelf: 'flex-start',
-              backgroundColor: '#F6F3F5',
-            },
-          ]}>
-          <MaterialCommunityIcons name="email" size={20} color={'grey'} />
+          <View style={style.borderLine} />
+
+          <Text style={style.inputHeader}>Email</Text>
           <TextInput
             value={email}
-            style={{width: '90%', marginLeft: 6, height: 45}}
+            style={{height: 45, fontSize: 17}}
             onChangeText={text => setEmail(text)}
             placeholder="Enter Email"
-            placeholderTextColor={'#000'}
+            placeholderTextColor={'grey'}
           />
-        </View>
+          <View style={style.borderLine} />
+          <Text style={style.inputHeader}>Age</Text>
+          <TextInput
+            keyboardType="number-pad"
+            value={age}
+            style={{height: 45, fontSize: 17}}
+            onChangeText={text => setAge(text)}
+            placeholder="Enter Age"
+            placeholderTextColor={'grey'}
+          />
 
-        <View style={[style.passwordContainer, {width: '89%'}]}>
-          <MaterialCommunityIcons name="phone" size={20} color={'grey'} />
+          <View style={style.borderLine} />
+          <Text style={style.inputHeader}>Telephone</Text>
           <TextInput
             keyboardType="number-pad"
             value={phone}
-            style={{width: '90%', marginLeft: 6, height: 45}}
+            style={{height: 45, fontSize: 17}}
             onChangeText={text => setPhone(text)}
             placeholder="Enter Phone"
-            placeholderTextColor={'#000'}
+            placeholderTextColor={'grey'}
           />
+          <View style={style.borderLine} />
         </View>
         <TouchableOpacity
           activeOpacity={0.9}
           onPress={() => {
             postData();
           }}
-          style={[
-            style.loginBtn,
-            {
-              marginTop: 15,
-              backgroundColor: '#FB5B64',
-            },
-          ]}>
+          style={[style.loginBtn]}>
           {loader ? (
             <View style={style.loaderStyle}>
-              <ActivityIndicator style={{}} size="small" color="white" />
+              <ActivityIndicator style={{}} size="small" color="black" />
             </View>
           ) : (
             <Text
               style={{
                 fontSize: 16,
-                fontWeight: 'bold',
-                color: 'white',
+                fontWeight: '800',
+                color: 'black',
               }}>
               Post
             </Text>

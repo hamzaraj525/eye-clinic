@@ -2,21 +2,13 @@ import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
-    alignItems: 'center',
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#000000aa',
   },
-  containerr: {
-    borderRadius: 33,
-  },
+
   whiteContainer: {
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    backgroundColor: '#fff',
+    flex: 1,
+    backgroundColor: 'white',
     borderRadius: 15,
-    padding: 10,
   },
   passwordContainer: {
     marginTop: '4%',
@@ -29,19 +21,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  TiName: {
-    width: '90%',
-    height: 50,
-    marginLeft: 6,
-  },
+  TiName: {fontSize: 12, width: '90%', height: 50, marginLeft: 6},
+
   loginBtn: {
-    width: width / 2,
-    height: 40,
+    width: '80%',
+    height: 45,
     borderRadius: 25,
-    backgroundColor: 'red',
+    backgroundColor: 'rgb(72,154,237)',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     marginTop: '6%',
+    elevation: 0,
   },
 
   okBtnTxt: {
@@ -50,12 +40,29 @@ export default StyleSheet.create({
     color: 'white',
   },
   imgBtn: {
-    backgroundColor: '#EDF6FF',
+    backgroundColor: 'rgb(233,236,244)',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 110 / 2,
-    width: 110,
-    height: 110,
-    marginTop: '-15%',
+    borderRadius: 11,
+    width: '80%',
+    height: height / 4,
+    marginTop: '10%',
+  },
+  img: {
+    borderRadius: 11,
+    width: '100%',
+    height: height / 4,
+  },
+  backImg: {flex: 1},
+  titleHeader: {
+    color: 'black',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  HeaderContainer: {
+    alignItems: 'center',
+    width: '80%',
+    flexDirection: 'row',
+    marginTop: '3%',
   },
 });

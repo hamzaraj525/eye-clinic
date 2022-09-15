@@ -103,6 +103,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: '3%',
     backgroundColor: 'rgb(255,255,255)',
+    elevation: 0.5,
   },
   nameInitials: {
     color: 'white',
@@ -130,10 +131,12 @@ export default StyleSheet.create({
   txtSub: {fontSize: 15, color: 'black'},
   logo: {width: 38, height: 38},
   searchInput: {
-    fontSize: 16,
-    paddingHorizontal: '5%',
+    marginLeft: 5,
+    fontSize: 15,
+    width: 160,
+    height: 38,
+    borderRadius: 30,
     color: 'black',
-    borderRadius: 20,
   },
   picContainer: {
     width: 90,
@@ -142,6 +145,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(255,255,255)',
     justifyContent: 'center',
+    elevation: 1,
   },
   uploadBtn: {
     top: -25,

@@ -5,6 +5,12 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  parentContainer: {
+    marginTop: '6%',
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: 'white',
+  },
   passwordContainer: {
     flexDirection: 'row',
     backgroundColor: '#F6F3F5',
@@ -67,18 +73,39 @@ export default StyleSheet.create({
     backgroundColor: '#F6F3F5',
   },
   loginBtn: {
+    marginTop: 15,
+    backgroundColor: 'rgb(240,220,111)',
     width: '100%',
     borderRadius: 25,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 40,
-    backgroundColor: 'orange',
   },
   loaderStyle: {flex: 1, justifyContent: 'center', alignItems: 'center'},
   uploadTxt: {
     fontSize: 16,
     color: '#0000ff',
     marginTop: 10,
+  },
+  borderLine: {
+    width: '100%',
+    marginTop: '1%',
+    marginBottom: '2%',
+    backgroundColor: 'rgb(55,83,108)',
+    height: 0.5,
+  },
+  inputHeader: {fontSize: 13, fontWeight: '900', color: 'rgb(55,83,108)'},
+
+  newUserTxt: {
+    paddingLeft: 5,
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: 'rgb(55,83,108)',
+  },
+  boldTt: {
+    marginTop: '8%',
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });

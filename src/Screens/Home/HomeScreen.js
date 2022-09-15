@@ -7,7 +7,7 @@ import Constraints from '../../Constraints/Constraints';
 import database from '@react-native-firebase/database';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import UpdateHomeModal from './../../Components/UpdateHomeModal';
+
 import {
   Text,
   View,
@@ -20,13 +20,7 @@ import {
   FlatList,
 } from 'react-native';
 const {width, height} = Dimensions.get('window');
-const colors = [
-  'rgb(240,98,146)',
-  'rgb(186,104,200)',
-  'rgb(144,164,174)',
-  'rgb(255,185,82)',
-  'rgb(77,182,172)',
-];
+import {colors, cardColors} from './../../DataStore/TimeData';
 
 function HomeScreen({navigation, route}) {
   const [input, setInput] = useState('');
@@ -40,10 +34,6 @@ function HomeScreen({navigation, route}) {
   useEffect(() => {
     getData();
   }, []);
-
-  const hideMailModal = () => {
-    setShowModal(false);
-  };
 
   const searchFlter = text => {
     if (text) {
@@ -105,6 +95,7 @@ function HomeScreen({navigation, route}) {
             />
             {showInput ? (
               <Animatable.View
+                style={{backgroundColor: '#fff', borderRadius: 20}}
                 useNativeDriver={true}
                 duration={500}
                 animation={'zoomIn'}>
@@ -171,8 +162,7 @@ function HomeScreen({navigation, route}) {
     return (
       <Pressable
         onPress={() => {
-          setUserKey(item.key);
-          setShowModal(true);
+          navigation.navigate('UploadPatientReport', {Item: item});
         }}
         style={style.servicesContain}>
         <Animatable.View
@@ -180,13 +170,13 @@ function HomeScreen({navigation, route}) {
           style={style.card}
           useNativeDriver={true}
           delay={index * 280}
-          animation={'fadeInLeft'}>
+          animation={'fadeInDown'}>
           <View style={style.picContainer}>
             <View
               style={[
                 style.pic,
                 {
-                  backgroundColor: colors[index % colors.length],
+                  backgroundColor: cardColors[index % cardColors.length],
                 },
               ]}>
               <Text style={style.nameInitials}>{initial}</Text>
@@ -229,13 +219,6 @@ function HomeScreen({navigation, route}) {
           <ActivityIndicator color={'#3372e2'} size={'large'} />
         </View>
       )}
-
-      <UpdateHomeModal
-        userKey={userKey}
-        showModal={showModal}
-        navigation={navigation}
-        hideMailModal={hideMailModal}
-      />
     </View>
   );
 }

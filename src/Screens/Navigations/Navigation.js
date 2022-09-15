@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LogBox, SafeAreaView, View, Image, StyleSheet} from 'react-native';
+import {StyleSheet, Easing} from 'react-native';
 import SplashScreen from '../../Screens/Splash/SplashScreen';
 import HomeScreen from '../../Screens/Home/HomeScreen';
 
 import UploadUserData from '../../Screens/UploadUserData/UploadUserData';
+import ReportDetail from '../../Screens/ReportDetail/ReportDetail';
+import UploadPatientReport from '../../Screens/UploadPatientReport/UploadPatientReport';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,16 @@ function Navigation({}) {
         options={{header: () => null}}
         name="UploadUserData"
         component={UploadUserData}
+      />
+      <Stack.Screen
+        options={{header: () => null}}
+        name="UploadPatientReport"
+        component={UploadPatientReport}
+      />
+      <Stack.Screen
+        options={{header: () => null}}
+        name="ReportDetail"
+        component={ReportDetail}
       />
     </Stack.Navigator>
   );
