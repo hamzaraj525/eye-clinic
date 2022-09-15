@@ -15,6 +15,8 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import * as Animatable from 'react-native-animatable';
 import Images from './../../Constraints/Images';
 const {width, height} = Dimensions.get('window');
+const PLACEHOLDER =
+  'https://firebasestorage.googleapis.com/v0/b/eyeclinic-ce560.appspot.com/o/eyeClinicPics%2Faffd16fd5264cab9197da4cd1a996f820e601ee4.jpg?alt=media&token=409f2e06-72e6-45d9-a115-6983a0201e9c';
 
 function ReportDetail({navigation, route}) {
   const {Items} = route.params;
@@ -58,7 +60,7 @@ function ReportDetail({navigation, route}) {
                 useNativeDriver={true}
                 animation={'slideInDown'}
                 style={style.header}>
-                22/02/2022
+                {Items.fullDate}
               </Animatable.Text>
             </View>
             <View style={style.container2}>
@@ -156,22 +158,22 @@ function ReportDetail({navigation, route}) {
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.SPH}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>33</Text>
+                  <Text style={[style.header3]}>{Items.leftSPH}</Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.CYL}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>33</Text>
+                  <Text style={[style.header3]}> {Items.leftCYL}</Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.AXIS}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>23</Text>
+                  <Text style={[style.header3]}> {Items.leftAXIS}</Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.VA}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>12</Text>
+                  <Text style={[style.header3]}> {Items.leftVA}</Text>
                 </View>
               </View>
             </Animatable.View>
@@ -187,22 +189,22 @@ function ReportDetail({navigation, route}) {
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.SPH}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>21</Text>
+                  <Text style={[style.header3]}> {Items.rightSPH}</Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.CYL}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>33</Text>
+                  <Text style={[style.header3]}> {Items.rightCYL} </Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.AXIS}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>18 </Text>
+                  <Text style={[style.header3]}> {Items.rightAXIS} </Text>
                 </View>
                 <View style={style.sunParenttable}>
                   <Text style={style.header2}>{Constraints.VA}</Text>
                   <View style={[style.line, {height: 3}]} />
-                  <Text style={[style.header3]}>12</Text>
+                  <Text style={[style.header3]}>{Items.rightVA}</Text>
                 </View>
               </View>
             </Animatable.View>
@@ -227,8 +229,7 @@ function ReportDetail({navigation, route}) {
                 duration={1200}
                 animation={'fadeIn'}
                 style={[style.answer]}>
-                he got some illness due to lack of sph in right eye he got some
-                illness due to lack of sph in right eye
+                {Items.diagnosis}
               </Animatable.Text>
             </View>
           </View>
@@ -251,8 +252,7 @@ function ReportDetail({navigation, route}) {
                 duration={1200}
                 animation={'fadeIn'}
                 style={[style.answer]}>
-                he got some illness due to lack of sph in right eye he got some
-                illness due to lack of sph in right eye
+                {Items.treatment}
               </Animatable.Text>
             </View>
           </View>
@@ -265,7 +265,9 @@ function ReportDetail({navigation, route}) {
           animation={'fadeIn'}>
           <FastImage
             style={{width: width, height: height / 2}}
-            source={Images.placeHolderImg}
+            source={{
+              uri: Items.imageUpload ? Items.imageUpload : PLACEHOLDER,
+            }}
             resizeMode={FastImage.resizeMode.contain}
           />
         </Animatable.View>

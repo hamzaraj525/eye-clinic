@@ -209,6 +209,8 @@ function HomeScreen({navigation, route}) {
         <>
           <FlatList
             data={list}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             renderItem={renderServicesList}
             contentContainerStyle={{paddingBottom: 20}}
             keyExtractor={item => item.key}

@@ -47,46 +47,43 @@ const ReportUploadModal = props => {
   const fullDate = day + '/' + month + '/' + year;
 
   const updaterData = async () => {
-    if (rightSPH.length > 0) {
-      setLoading(true);
-      const imageUpload = await uploadImage();
-      database()
-        .ref('usersData/' + props.patientKey + '/Reports')
-        .push({
-          fullDate,
-          rightSPH,
-          rightCYL,
-          rightAXIS,
-          rightVA,
-          leftSPH,
-          leftCYL,
-          leftAXIS,
-          leftVA,
-          treatment,
-          diagnosis,
-        })
-        .then(() => {
-          props.hideMailModal();
-          setLoading(false);
-          image === null;
-          rightSPH === null;
-          rightCYL === null;
-          rightAXIS === null;
-          rightVA === null;
-          leftSPH === null;
-          leftCYL === null;
-          leftAXIS === null;
-          leftVA === null;
-          treatment === null, diagnosis === null;
-        })
-        .catch(() => {
-          setLoading(false);
-          alert('Some error occured');
-        });
-    } else {
-      setLoading(false);
-      alert('Fields Required');
-    }
+    setLoading(true);
+    const imageUpload = await uploadImage();
+    database()
+      .ref('usersData/' + props.patientKey + '/Reports')
+      .push({
+        fullDate,
+        rightSPH,
+        rightCYL,
+        rightAXIS,
+        rightVA,
+        leftSPH,
+        leftCYL,
+        leftAXIS,
+        leftVA,
+        treatment,
+        diagnosis,
+        imageUpload,
+      })
+      .then(() => {
+        props.hideMailModal();
+        setLoading(false);
+        image === null;
+        rightSPH === null;
+        rightCYL === null;
+        rightAXIS === null;
+        rightVA === null;
+        leftSPH === null;
+        leftCYL === null;
+        leftAXIS === null;
+        leftVA === null;
+        treatment === null, diagnosis === null;
+        image === null;
+      })
+      .catch(() => {
+        setLoading(false);
+        alert('Some error occured');
+      });
   };
 
   //will upload to Firebase storage and make a link of Image
