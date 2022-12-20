@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {height, width} = Dimensions.get('window');
+import {font} from './../../Constraints/Constraints';
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -11,6 +12,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   red: {
+    borderTopRightRadius: 40,
+    borderBottomRightRadius: 40,
     width: 110,
     height: 50,
     backgroundColor: 'orange',
@@ -46,10 +49,11 @@ export default StyleSheet.create({
   },
   shreBtn: {alignItems: 'center', justifyContent: 'center'},
   titleSchedule: {
-    alignSelf: 'center',
+    paddingHorizontal: 15,
+    fontFamily: font.FONTTIMES,
+    fontSize: 35,
+    marginTop: 20,
     color: 'black',
-    fontWeight: '700',
-    fontSize: 19,
   },
   titleSub: {
     color: 'grey',
@@ -59,7 +63,7 @@ export default StyleSheet.create({
   },
   titleSub2: {
     color: 'grey',
-    fontWeight: '500',
+    fontFamily: font.FONTTIMES,
     fontSize: 13,
   },
   btnBack: {alignItems: 'center', justifyContent: 'center'},
@@ -72,7 +76,7 @@ export default StyleSheet.create({
   timeTitle: {
     fontWeight: '600',
     color: 'black',
-    fontWeight: '700',
+    fontFamily: font.FONTTIMES,
     fontSize: 15,
   },
   datePickerBtn: {

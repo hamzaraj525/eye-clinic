@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Pressable,
   TouchableOpacity,
+  ImageBackground,
   Dimensions,
   ScrollView,
 } from 'react-native';
@@ -23,102 +24,115 @@ function ReportDetail({navigation, route}) {
 
   return (
     <View style={style.container}>
-      <ScrollView contentContainerStyle={{paddingBottom: 25}}>
-        <View style={style.headerContain}>
-          <Pressable
-            style={style.btnBack}
-            onPress={() => {
-              navigation.goBack();
-            }}>
-            <Animatable.View useNativeDriver={true} animation={'slideInDown'}>
-              <Fontisto
-                style={{marginTop: '2%'}}
-                name="arrow-left-l"
-                size={28}
-                color={'rgb(55,83,108)'}
+      <ScrollView
+        contentContainerStyle={{paddingBottom: 0}}
+        showsVerticalScrollIndicato={false}
+        showsHorizontalScrollIndicator={false}>
+        <ImageBackground
+          blurRadius={3}
+          source={require('./../../../assets/Images/eee.jpg')}
+          resizeMode="cover"
+          style={style.backImg}>
+          <View style={style.headerContain}>
+            <Pressable
+              style={style.btnBack}
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Animatable.View useNativeDriver={true} animation={'slideInDown'}>
+                <Fontisto
+                  style={{marginTop: '2%'}}
+                  name="arrow-left-l"
+                  size={28}
+                  color={'rgb(55,83,108)'}
+                />
+              </Animatable.View>
+            </Pressable>
+          </View>
+          <View style={style.subParent3}>
+            <View style={style.subParent2}>
+              <View style={style.container2}>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={[style.headerTop]}>
+                  {Constraints.PATIENTDETAILS}
+                </Animatable.Text>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.headerSub}>
+                  Date
+                </Animatable.Text>
+
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.header}>
+                  {Items.fullDate}
+                </Animatable.Text>
+              </View>
+              <View style={style.container2}>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.headerSub}>
+                  Patient Name
+                </Animatable.Text>
+
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.header}>
+                  {Items.PatientName}
+                </Animatable.Text>
+              </View>
+              <View style={style.container2}>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.headerSub}>
+                  Patient Age
+                </Animatable.Text>
+
+                <Animatable.Text
+                  useNativeDriver={true}
+                  animation={'slideInDown'}
+                  style={style.header}>
+                  {Items.PatientAge}
+                </Animatable.Text>
+              </View>
+            </View>
+            <Animatable.View
+              useNativeDriver={true}
+              delay={370}
+              duration={1200}
+              animation={'fadeIn'}>
+              <FastImage
+                style={{width: 110, height: 110}}
+                source={Images.profile}
+                resizeMode={FastImage.resizeMode.contain}
               />
             </Animatable.View>
-          </Pressable>
-        </View>
-        <View style={style.subParent3}>
-          <View style={style.subParent2}>
-            <View style={style.container2}>
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={[style.headerTop]}>
-                {Constraints.PATIENTDETAILS}
-              </Animatable.Text>
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.headerSub}>
-                Date
-              </Animatable.Text>
-
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.header}>
-                {Items.fullDate}
-              </Animatable.Text>
-            </View>
-            <View style={style.container2}>
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.headerSub}>
-                Patient Name
-              </Animatable.Text>
-
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.header}>
-                Ali Khan
-              </Animatable.Text>
-            </View>
-            <View style={style.container2}>
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.headerSub}>
-                Patient Age
-              </Animatable.Text>
-
-              <Animatable.Text
-                useNativeDriver={true}
-                animation={'slideInDown'}
-                style={style.header}>
-                22
-              </Animatable.Text>
-            </View>
           </View>
-          <Animatable.View
+          <View style={style.line1} />
+          <Animatable.Text
             useNativeDriver={true}
-            delay={370}
-            duration={1200}
-            animation={'fadeIn'}>
-            <FastImage
-              style={{width: 110, height: 110}}
-              source={Images.profile}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-          </Animatable.View>
-        </View>
-        <View style={style.line1} />
-        <Animatable.Text
-          useNativeDriver={true}
-          delay={350}
-          duration={1000}
-          animation={'fadeIn'}
-          style={[
-            style.header2,
-            {alignSelf: 'center', marginTop: 5, fontSize: 22, marginBottom: 9},
-          ]}>
-          {Constraints.REFRACTIONCARD}
-        </Animatable.Text>
-        <View style={style.subParent}>
+            delay={350}
+            duration={1000}
+            animation={'fadeIn'}
+            style={[
+              style.header2,
+              {
+                alignSelf: 'center',
+                marginTop: 5,
+                fontSize: 22,
+                marginBottom: 9,
+              },
+            ]}>
+            {Constraints.REFRACTIONCARD}
+          </Animatable.Text>
+
           <View
             style={{
               flexDirection: 'row',
@@ -209,69 +223,75 @@ function ReportDetail({navigation, route}) {
               </View>
             </Animatable.View>
           </View>
-        </View>
 
-        <View style={style.line1} />
-        <View style={style.subParent3}>
-          <View style={style.subParent2}>
-            <View style={style.container2}>
-              <Animatable.Text
-                useNativeDriver={true}
-                delay={400}
-                duration={1000}
-                animation={'fadeIn'}
-                style={[style.headerTop]}>
-                {Constraints.DIAGNOSIS}
-              </Animatable.Text>
-              <Animatable.Text
-                useNativeDriver={true}
-                delay={600}
-                duration={1200}
-                animation={'fadeIn'}
-                style={[style.answer]}>
-                {Items.diagnosis}
-              </Animatable.Text>
+          <View style={style.line1} />
+          <View style={style.subParent3}>
+            <View style={style.subParent2}>
+              <View style={style.container2}>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  delay={400}
+                  duration={1000}
+                  animation={'fadeIn'}
+                  style={[style.headerTop]}>
+                  {Constraints.DIAGNOSIS}
+                </Animatable.Text>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  delay={600}
+                  duration={1200}
+                  animation={'fadeIn'}
+                  style={[style.answer]}>
+                  {Items.diagnosis}
+                </Animatable.Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={style.line1} />
-        <View style={style.subParent3}>
-          <View style={style.subParent2}>
-            <View style={style.container2}>
-              <Animatable.Text
-                useNativeDriver={true}
-                delay={700}
-                duration={1200}
-                animation={'fadeIn'}
-                style={[style.headerTop]}>
-                {Constraints.TREATMENT}
-              </Animatable.Text>
-              <Animatable.Text
-                useNativeDriver={true}
-                delay={600}
-                duration={1200}
-                animation={'fadeIn'}
-                style={[style.answer]}>
-                {Items.treatment}
-              </Animatable.Text>
+          <View style={style.line1} />
+          <View style={style.subParent3}>
+            <View style={style.subParent2}>
+              <View style={style.container2}>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  delay={700}
+                  duration={1200}
+                  animation={'fadeIn'}
+                  style={[style.headerTop]}>
+                  {Constraints.TREATMENT}
+                </Animatable.Text>
+                <Animatable.Text
+                  useNativeDriver={true}
+                  delay={600}
+                  duration={1200}
+                  animation={'fadeIn'}
+                  style={[style.answer]}>
+                  {Items.treatment}
+                </Animatable.Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={style.line1} />
-        <Animatable.View
-          useNativeDriver={true}
-          delay={370}
-          duration={1300}
-          animation={'fadeIn'}>
-          <FastImage
-            style={{width: width, height: height / 2}}
-            source={{
-              uri: Items.imageUpload ? Items.imageUpload : PLACEHOLDER,
+          <View style={style.line1} />
+          <Animatable.View
+            style={{
+              marginTop: '6%',
+              width: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-        </Animatable.View>
-        <View style={style.line1} />
+            useNativeDriver={true}
+            delay={370}
+            duration={1300}
+            animation={'fadeIn'}>
+            <FastImage
+              style={{width: '85%', height: height / 2, borderRadius: 30}}
+              source={{
+                uri: Items.imageUpload ? Items.imageUpload : PLACEHOLDER,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+          </Animatable.View>
+          <View style={style.line1} />
+        </ImageBackground>
       </ScrollView>
     </View>
   );

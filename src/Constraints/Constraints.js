@@ -4,8 +4,8 @@ export default Constraints = {
   SCHEDULE: 'Appoinments',
   SCHEDULE_subTitle: 'Please select Date',
   UPLOADTXT: 'Add Patient Report',
-  UPLOADSUBTXT: 'You can add patient ',
-  UPLOADSUBTXT2: 'report details',
+  UPLOADSUBTXT: 'You have no record ',
+  UPLOADSUBTXT2: 'of this patient',
   SPH: 'SPH',
   CYL: 'CYL',
   AXIS: 'AXIS',
@@ -16,4 +16,6 @@ export default Constraints = {
   PATIENTDETAILS: 'Patient Details',
   TREATMENT: 'Treatment',
   DIAGNOSIS: 'Diagnosis',
+  FOOTERTXT: 'Find your patient Reports...',
 };
+export const font = {FONTTIMES: 'TIMESR'};

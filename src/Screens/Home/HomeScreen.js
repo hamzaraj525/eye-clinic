@@ -42,11 +42,17 @@ function HomeScreen({navigation, route}) {
       }, 1200);
 
       const filterArray = masterList.filter((item, i) => {
-        const itemData = item.userName
-          ? item.userName.toUpperCase()
-          : ''.toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
+        const itemUserName = item.userName;
+
+        const itemPhone = item.phone;
+
+        if (item.phone) {
+          const textPhone = text;
+          return itemPhone.indexOf(textPhone) > -1;
+        } else if (item.userName) {
+          const textUserName = text.toUpperCase();
+          return itemUserName.indexOf(textUserName) > -1;
+        }
       });
       setLoader(true);
       setList(filterArray);
@@ -69,6 +75,7 @@ function HomeScreen({navigation, route}) {
             email: child.val().email,
             userName: child.val().userName,
             phone: child.val().phone,
+            age: child.val().age,
             Img: child.val().Img,
           });
         });
@@ -207,14 +214,18 @@ function HomeScreen({navigation, route}) {
       {servicesHeader()}
       {!loader ? (
         <>
-          <FlatList
-            data={list}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            renderItem={renderServicesList}
-            contentContainerStyle={{paddingBottom: 20}}
-            keyExtractor={item => item.key}
-          />
+          {list.length > 0 ? (
+            <FlatList
+              data={list}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              renderItem={renderServicesList}
+              contentContainerStyle={{paddingBottom: 20}}
+              keyExtractor={item => item.key}
+            />
+          ) : (
+            <Text style={style.txt}>You have No Patients for now</Text>
+          )}
         </>
       ) : (
         <View style={{alignItems: 'center', marginTop: height / 4}}>

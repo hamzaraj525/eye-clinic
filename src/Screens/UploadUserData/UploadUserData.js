@@ -17,7 +17,7 @@ import style from './style';
 import storage from '@react-native-firebase/storage';
 import database from '@react-native-firebase/database';
 
-const UploadUserData = ({navigation}) => {
+const UploadUserData = ({navigation, route}) => {
   const [userName, setUserName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
@@ -96,7 +96,7 @@ const UploadUserData = ({navigation}) => {
           <Text style={style.inputHeader}>Name</Text>
           <TextInput
             value={userName}
-            style={{height: 45, fontSize: 17}}
+            style={style.txtInput}
             onChangeText={text => setUserName(text)}
             placeholder="Enter Name"
             placeholderTextColor={'grey'}
@@ -105,7 +105,7 @@ const UploadUserData = ({navigation}) => {
           <Text style={style.inputHeader}>Address</Text>
           <TextInput
             value={address}
-            style={{height: 45, fontSize: 17}}
+            style={style.txtInput}
             onChangeText={text => setAddress(text)}
             placeholder="Enter Address"
             placeholderTextColor={'grey'}
@@ -115,7 +115,7 @@ const UploadUserData = ({navigation}) => {
           <Text style={style.inputHeader}>Email</Text>
           <TextInput
             value={email}
-            style={{height: 45, fontSize: 17}}
+            style={style.txtInput}
             onChangeText={text => setEmail(text)}
             placeholder="Enter Email"
             placeholderTextColor={'grey'}
@@ -125,7 +125,7 @@ const UploadUserData = ({navigation}) => {
           <TextInput
             keyboardType="number-pad"
             value={age}
-            style={{height: 45, fontSize: 17}}
+            style={style.txtInput}
             onChangeText={text => setAge(text)}
             placeholder="Enter Age"
             placeholderTextColor={'grey'}
@@ -136,7 +136,7 @@ const UploadUserData = ({navigation}) => {
           <TextInput
             keyboardType="number-pad"
             value={phone}
-            style={{height: 45, fontSize: 17}}
+            style={style.txtInput}
             onChangeText={text => setPhone(text)}
             placeholder="Enter Phone"
             placeholderTextColor={'grey'}
@@ -154,14 +154,7 @@ const UploadUserData = ({navigation}) => {
               <ActivityIndicator style={{}} size="small" color="black" />
             </View>
           ) : (
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: '800',
-                color: 'black',
-              }}>
-              Post
-            </Text>
+            <Text style={style.btnPost}>Post</Text>
           )}
         </TouchableOpacity>
       </ScrollView>

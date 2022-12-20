@@ -46,6 +46,9 @@ const ReportUploadModal = props => {
   let year = todayDate.getFullYear();
   const fullDate = day + '/' + month + '/' + year;
 
+  const PatientName = props.patientName;
+  const PatientAge = props.patientAge;
+
   const updaterData = async () => {
     setLoading(true);
     const imageUpload = await uploadImage();
@@ -64,6 +67,8 @@ const ReportUploadModal = props => {
         treatment,
         diagnosis,
         imageUpload,
+        PatientName,
+        PatientAge,
       })
       .then(() => {
         props.hideMailModal();

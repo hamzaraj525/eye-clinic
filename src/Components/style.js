@@ -1,5 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
+import {font} from './../Constraints/Constraints';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -21,7 +23,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  TiName: {fontSize: 12, width: '90%', height: 50, marginLeft: 6},
+  TiName: {
+    fontSize: 12,
+    width: '90%',
+    height: 50,
+    marginLeft: 6,
+    fontFamily: font.FONTTIMES,
+  },
 
   loginBtn: {
     width: '80%',
@@ -36,7 +44,7 @@ export default StyleSheet.create({
 
   okBtnTxt: {
     fontSize: 15,
-    fontWeight: '800',
+    fontFamily: font.FONTTIMES,
     color: 'white',
   },
   imgBtn: {
@@ -56,7 +64,7 @@ export default StyleSheet.create({
   backImg: {flex: 1},
   titleHeader: {
     color: 'black',
-    fontWeight: '700',
+    fontFamily: font.FONTTIMES,
     fontSize: 16,
   },
   HeaderContainer: {

@@ -1,21 +1,22 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
+import {font} from './../../Constraints/Constraints';
+
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(230, 225, 250)',
-  },
-  header: {color: 'black', fontSize: 18, fontWeight: '800'},
+  container: {flex: 1, backgroundColor: 'white'},
+  header: {color: 'black', fontSize: 18, fontFamily: font.FONTTIMES},
   headerTop: {
     color: 'black',
     fontSize: 26,
-    fontWeight: '800',
+    fontFamily: font.FONTTIMES,
     marginBottom: 7,
   },
+  backImg: {flex: 1},
   answer: {
+    fontFamily: font.FONTTIMES,
     color: 'black',
     fontSize: 16,
-    fontWeight: '600',
+
     marginBottom: 7,
   },
   sunParenttable: {
@@ -24,20 +25,20 @@ export default StyleSheet.create({
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 4,
+    padding: 3,
     height: 70,
     marginRight: 1,
   },
   header2: {
     color: 'black',
-    fontWeight: '800',
+    fontFamily: font.FONTTIMES,
     alignSelf: 'center',
     marginTop: 1,
     fontSize: 14,
   },
   header3: {
     color: 'black',
-    fontWeight: '700',
+    fontFamily: font.FONTTIMES,
     marginBottom: 7,
     alignSelf: 'center',
     marginTop: 1,
@@ -46,7 +47,7 @@ export default StyleSheet.create({
   headerSub: {
     color: 'grey',
     fontSize: 20,
-    fontWeight: '800',
+    fontFamily: font.FONTTIMES,
   },
   colorHeader1: {
     width: 50,
@@ -81,7 +82,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   subParent2: {flexDirection: 'column', paddingHorizontal: '5%'},
-  subParent: {paddingHorizontal: '5%'},
+  subParent: {paddingHorizontal: '5%', width: width},
   container2: {marginTop: 10},
   line: {
     width: '100%',

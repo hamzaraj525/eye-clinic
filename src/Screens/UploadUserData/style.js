@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-
+import {font} from './../../Constraints/Constraints';
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -94,18 +94,30 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(55,83,108)',
     height: 0.5,
   },
-  inputHeader: {fontSize: 13, fontWeight: '900', color: 'rgb(55,83,108)'},
+  inputHeader: {
+    fontSize: 13,
+    fontFamily: font.FONTTIMES,
+    color: 'rgb(55,83,108)',
+  },
 
   newUserTxt: {
     paddingLeft: 5,
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: font.FONTTIMES,
     color: 'rgb(55,83,108)',
   },
   boldTt: {
     marginTop: '8%',
     fontSize: 50,
-    fontWeight: 'bold',
+
+    color: 'black',
+    fontFamily: font.FONTTIMES,
+  },
+  txtInput: {height: 45, fontSize: 17, fontFamily: font.FONTTIMES},
+
+  btnPost: {
+    fontSize: 16,
+    fontFamily: font.FONTTIMES,
     color: 'black',
   },
 });

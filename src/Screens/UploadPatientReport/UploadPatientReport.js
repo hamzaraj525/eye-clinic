@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import style from './style';
 import time from '../../DataStore/TimeData';
@@ -28,20 +29,20 @@ const {width, height} = Dimensions.get('window');
 
 function UploadPatientReport({navigation, route}) {
   const [showModal, setShowModal] = useState(false);
-  const [show, setShow] = useState(false);
-  const [mode, setMode] = useState('date');
+  const [loading, setLoading] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [colorId, setColorId] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [timeTitle, setTimeTitle] = useState('9:00 AM');
   const [list, setList] = useState([]);
   const {Item} = route.params;
 
   useEffect(() => {
     getData();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const getData = () => {
+    setLoading(true);
     setLoader(true);
     database()
       .ref('usersData/' + Item.key + '/Reports')
@@ -62,6 +63,8 @@ function UploadPatientReport({navigation, route}) {
             rightVA: child.val().rightVA,
             treatment: child.val().treatment,
             imageUpload: child.val().imageUpload,
+            PatientName: child.val().PatientName,
+            PatientAge: child.val().PatientAge,
           });
         });
 
@@ -81,14 +84,12 @@ function UploadPatientReport({navigation, route}) {
   const header = ({item, index}) => {
     return (
       <>
-        {/* <Text style={style.scheduleSubTitle}>
-          {Constraints.SCHEDULE_subTitle}
-        </Text> */}
-        <Text style={[style.titleSchedule, {fontSize: 35, marginTop: 5}]}>
-          {Constraints.SCHEDULE}
-        </Text>
+        <Text style={[style.titleSchedule, {}]}>{Constraints.FOOTERTXT}</Text>
       </>
     );
+  };
+  const footer = ({item, index}) => {
+    return <></>;
   };
 
   const renderTime = ({item, index}) => {
@@ -147,21 +148,9 @@ function UploadPatientReport({navigation, route}) {
       </Animatable.View>
     );
   };
-
-  return (
-    <View
-      style={[
-        style.container,
-        {
-          backgroundColor: list.length > 0 ? 'rgb(108, 187, 154)' : 'white',
-        },
-      ]}>
-      <StatusBar
-        hidden={false}
-        barStyle="light-content"
-        backgroundColor={'#000000aa'}
-      />
-      <ScrollView>
+  const renderData = () => {
+    return (
+      <>
         {list.length > 0 ? (
           <>
             <View style={style.header}>
@@ -192,6 +181,7 @@ function UploadPatientReport({navigation, route}) {
               showsHorizontalScrollIndicator={false}
               renderItem={renderTime}
               ListHeaderComponent={header}
+              ListFooterComponent={footer}
               contentContainerStyle={{paddingBottom: 20}}
               ListHeaderComponentStyle={{
                 paddingHorizontal: '6%',
@@ -200,6 +190,8 @@ function UploadPatientReport({navigation, route}) {
               keyExtractor={item => item.key}
             />
             <ReportUploadModal
+              patientName={Item.userName}
+              patientAge={Item.age}
               patientKey={Item.key}
               showModal={showModal}
               navigation={navigation}
@@ -240,6 +232,8 @@ function UploadPatientReport({navigation, route}) {
               </Pressable>
             </View>
             <ReportUploadModal
+              patientName={Item.userName}
+              patientAge={Item.age}
               patientKey={Item.key}
               showModal={showModal}
               navigation={navigation}
@@ -247,7 +241,30 @@ function UploadPatientReport({navigation, route}) {
             />
           </>
         )}
-      </ScrollView>
+      </>
+    );
+  };
+
+  return (
+    <View
+      style={[
+        style.container,
+        {
+          backgroundColor: list.length > 0 ? 'rgb(27, 176, 144)' : 'white',
+        },
+      ]}>
+      <StatusBar
+        hidden={false}
+        barStyle="light-content"
+        backgroundColor={'#000000aa'}
+      />
+      {loading ? (
+        <View style={{top: height / 2}}>
+          <ActivityIndicator size={'large'} color={'white'} />
+        </View>
+      ) : (
+        <ScrollView>{renderData()}</ScrollView>
+      )}
     </View>
   );
 }

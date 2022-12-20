@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
+import {font} from './../../Constraints/Constraints';
 
 export default StyleSheet.create({
   txt: {
@@ -75,7 +76,7 @@ export default StyleSheet.create({
     fontSize: 11,
     color: 'white',
   },
-  servicesContain: {marginTop: 5, alignSelf: 'center'},
+  servicesContain: {alignSelf: 'center'},
   card: {
     width: '99%',
     marginTop: 14,
@@ -107,18 +108,17 @@ export default StyleSheet.create({
   },
   nameInitials: {
     color: 'white',
-    fontWeight: '900',
+
     fontSize: 17,
+    fontFamily: font.FONTTIMES,
   },
   name: {
+    fontFamily: font.FONTTIMES,
     color: 'black',
-    fontWeight: '700',
+
     fontSize: 15,
   },
-  adres: {
-    color: 'grey',
-    fontSize: 12,
-  },
+  adres: {fontFamily: font.FONTTIMES, color: 'grey', fontSize: 12},
   welcomeTxtBody: {
     shadowColor: 'black',
     borderBottomLeftRadius: 55,
@@ -127,8 +127,19 @@ export default StyleSheet.create({
     backgroundColor: 'rgb(254,207,116)',
     padding: 18,
   },
-  txtTitle: {fontSize: 26, fontWeight: '700', color: 'black'},
-  txtSub: {fontSize: 15, color: 'black'},
+
+  txtTitle: {
+    fontSize: 26,
+    color: 'black',
+    fontFamily: font.FONTTIMES,
+  },
+
+  txtSub: {
+    fontSize: 15,
+    color: 'black',
+    fontFamily: font.FONTTIMES,
+    marginTop: 5,
+  },
   logo: {width: 38, height: 38},
   searchInput: {
     marginLeft: 5,
@@ -137,6 +148,7 @@ export default StyleSheet.create({
     height: 38,
     borderRadius: 30,
     color: 'black',
+    fontFamily: font.FONTTIMES,
   },
   picContainer: {
     width: 90,
@@ -150,7 +162,7 @@ export default StyleSheet.create({
   uploadBtn: {
     top: -25,
     right: 10,
-    backgroundColor: 'rgb(73,122,115)',
+    backgroundColor: 'rgb(191,115,244)',
     width: 40,
     height: 40,
     alignItems: 'center',
@@ -158,4 +170,5 @@ export default StyleSheet.create({
     borderRadius: 22,
     alignSelf: 'flex-end',
   },
+  txt: {alignSelf: 'center', fontFamily: font.FONTTIMES},
 });

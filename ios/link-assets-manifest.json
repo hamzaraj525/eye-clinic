@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/RUSTLER_.TTF",
+      "sha1": "5fff7d5b98c746ed69de97f0c5aedcab9e177bf3"
+    },
+    {
+      "path": "assets/fonts/TIMESR.ttf",
+      "sha1": "f03a4e9d4364d27d089caba3ff463206bfb4d933"
+    }
+  ]
+}

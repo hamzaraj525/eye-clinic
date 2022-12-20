@@ -1,6 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
-const time = [
+export const time = [
   {
     key: 201,
     title: '2/06/2022',
@@ -54,4 +54,3 @@ export const cardLength = [
   width - 70,
   width - 30,
 ];
-export default time;
