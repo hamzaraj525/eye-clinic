@@ -65,7 +65,7 @@ function SplashScreen({navigation}) {
               color: 'black',
               marginTop: 5,
             }}>
-            Have Healthy Eyes
+            Have Healthy Eyes 😃
           </Text>
         </View>
       </View>
