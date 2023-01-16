@@ -61,28 +61,29 @@ function HomeScreen({navigation, route}) {
     }
   };
 
-  const getData = () => {
-    setLoader(true);
-    database()
-      .ref('/usersData')
-      .on('value', snapshot => {
-        var li = [];
-        snapshot.forEach(child => {
-          console.log(child.val());
-          li.push({
-            key: child.key,
-            address: child.val().address,
-            email: child.val().email,
-            userName: child.val().userName,
-            phone: child.val().phone,
-            age: child.val().age,
-            Img: child.val().Img,
-          });
-        });
-        setLoader(false);
-        setList(li);
-        setMasterList(li);
-      });
+  const getData = async () => {
+    try {
+      setLoader(true);
+      const response = await fetch(
+        `https://eyeclinic-ce560-default-rtdb.firebaseio.com/usersData.json`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'EjLnc9pK774gUP2Xa41ETWvAoQAPUzSkZGywZlV2',
+          },
+        },
+      );
+      const json = await response.json();
+      const jsonData = Object.values(json);
+      setList(jsonData);
+      setMasterList(jsonData);
+      console.log(jsonData);
+      setLoader(false);
+    } catch (err) {
+      console.error(err);
+      setLoader(false);
+    }
   };
 
   const servicesHeader = () => {
